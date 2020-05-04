@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/','/welcome');
+Route::get('/welcome','homecontroller@product');
+Route::post('/add_cart','homecontroller@addcart');
+Route::get('/welcome/{id}','homecontroller@recart');
+Route::post('/transaksi','homecontroller@transaksi');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/userpage', 'userpagecontroller@index')->name('userpage');
+Route::post('/add_pro','userpagecontroller@addpro');
+Route::post('/edit_pro','userpagecontroller@edit_pro');
+Route::get('/hapus_pro/{id}','userpagecontroller@hapus_pro');
